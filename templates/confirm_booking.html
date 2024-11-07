@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('create_flight') }}">Create Flight</a>
+        <a href="{{ url_for('book_flight', flight_id=1) }}">Book Flight</a>  <!-- You can add other links as needed -->
+    </div>
+    
+    <h1>Booking Confirmed</h1>
+    <p>Thank you, {{ booking.name }}! Your booking for the flight {{ booking.flight.flight_number }} has been confirmed.</p>
+    <p>Flight Details:</p>
+    <ul>
+        <li><strong>Origin:</strong> {{ booking.flight.origin }}</li>
+        <li><strong>Destination:</strong> {{ booking.flight.destination }}</li>
+        <li><strong>Date:</strong> {{ booking.flight.date }}</li>
+        <li><strong>Price:</strong> ${{ booking.flight.price }}</li>
+    </ul>
+</body>
+</html>

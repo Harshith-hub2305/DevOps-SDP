@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Flight</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('create_flight') }}">Create Flight</a>
+        <a href="{{ url_for('book_flight', flight_id=1) }}">Book Flight</a>  <!-- You can add other links as needed -->
+    </div>
+    
+    <h1>Create a New Flight</h1>
+    <form method="POST">
+        <label for="flight_number">Flight Number:</label>
+        <input type="text" id="flight_number" name="flight_number" required><br><br>
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin" required><br><br>
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" required><br><br>
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" required><br><br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required><br><br>
+        <button type="submit">Create Flight</button>
+    </form>
+</body>
+</html>

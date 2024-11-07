@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('create_flight') }}">Create Flight</a>
+        <a href="{{ url_for('book_flight', flight_id=1) }}">Book Flight</a>  <!-- You can add other links as needed -->
+    </div>
+    
+    <h1>Available Flights</h1>
+    <a href="{{ url_for('create_flight') }}">Create New Flight</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flight_number }}</td>
+                <td>{{ flight.origin }}</td>
+                <td>{{ flight.destination }}</td>
+                <td>{{ flight.date }}</td>
+                <td>${{ flight.price }}</td>
+                <td>
+                    <a href="{{ url_for('book_flight', flight_id=flight.id) }}">Book</a> |
+                    <a href="{{ url_for('edit_flight', flight_id=flight.id) }}">Edit</a> |
+                    <form action="{{ url_for('delete_flight', flight_id=flight.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
